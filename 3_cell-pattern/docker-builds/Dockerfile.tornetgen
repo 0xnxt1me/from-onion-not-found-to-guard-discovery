@@ -50,8 +50,28 @@ WORKDIR /home/tornetgen/tornettools
 ENV PATH="/home/tornetgen/tor/src/core/or:/home/tornetgen/tor/src/app:/home/tornetgen/tor/src/tools:$PATH"
 
 # This is going to take a while.
+# Preprocess the userstats CSV to convert scientific-notation counts (e.g. '2e+05')
+# into plain integer strings so `tornetgen stage` can parse them.
+RUN python3 - <<'PY'
+import csv
+infile = '/home/tornetgen/userstats-relay-country.csv'
+outfile = '/home/tornetgen/userstats-relay-country.cleaned.csv'
+with open(infile, 'r') as inf, open(outfile, 'w', newline='') as outf:
+        reader = csv.reader(inf)
+        writer = csv.writer(outf)
+        for row in reader:
+                if len(row) >= 3:
+                        try:
+                                # Convert scientific notation or floats to integers
+                                row[2] = str(int(float(row[2])))
+                        except Exception:
+                                # Leave the original value if conversion fails
+                                pass
+                writer.writerow(row)
+PY
+
 RUN tornetgen stage /home/tornetgen/consensuses-2020-05 /home/tornetgen/server-descriptors-2020-05 \
-        /home/tornetgen/userstats-relay-country.csv --geoip_path /home/tornetgen/tor/src/config/geoip
+                /home/tornetgen/userstats-relay-country.cleaned.csv --geoip_path /home/tornetgen/tor/src/config/geoip
 
 # This will generate the actual scaled-down Tor network.
 # Make sure PATH contains the tor binaries, otherwise this will fail.
