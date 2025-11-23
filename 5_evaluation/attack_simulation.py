@@ -19,14 +19,15 @@ MEDIAN_HSDESC_LOOKUP_DURATION = 0.493
 
 N_HSDIRS_PER_ONION = 6
 
-# Sep 2020 consensus from CollecTor:
-# https://collector.torproject.org/archive/relay-descriptors/consensuses/consensuses-2020-09.tar.xz
-# grep -cE "^s.*HSDir.*$" 22/2020-09-22-16-00-00-consensus
-N_HSDIRS = 3905
+# Nov 2025 consensus from CollecTor:
+# https://collector.torproject.org/recent/relay-descriptors/consensuses/
+# Processed with process_consensus_2025.py
+N_HSDIRS = 5007  # Updated from 3905 (2020) to 5007 (2025)
 
 VICTIM_CCT = "VICTIM"
 NOISE_CCT = "NOISE"
 
+# Using same noise lookup rate as 2020 (assumption: similar network behavior)
 NOISE_LOOKUPS_PER_S = 1052.27
 TIME_BETWEEN_NOISE_LOOKUPS = 1 / NOISE_LOOKUPS_PER_S
 
@@ -41,7 +42,7 @@ VICTIM_CCT_GUARD = G1
 NOISE_CCT_GUARD = G2
 
 SECOND_HOP_RELAYS = [R3, R5]
-RELAY_CSV = "2020-09-22-18-36-48_relays.csv"
+RELAY_CSV = "2025-11-23_relays.csv"  # Updated from 2020-09-22
 
 # Based on rate=3 MAX_HSDESC_RATE crawl data.
 HSDESC_LOOKUPS_JSON_FILE = "hsdesc_lookup_details.json"
@@ -625,6 +626,9 @@ def read_relay_list(relay_csv):
             exit_probs[fingerprint] = exit_prob
 
         if guard_prob > 0.0:
+            if not (middle_prob > 0.0):
+                print(f"ERROR: Guard relay '{nickname}' ({fingerprint}) has guard_prob={guard_prob} but middle_prob={middle_prob}")
+                print(f"  is_guard={is_guard}, is_exit={is_exit}, bw={advertised_bandwidth}")
             assert middle_prob > 0.0
             assert exit_prob == 0.0
 
