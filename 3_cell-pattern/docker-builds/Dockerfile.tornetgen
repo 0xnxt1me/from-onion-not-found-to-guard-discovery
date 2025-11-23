@@ -77,6 +77,6 @@ RUN tornetgen stage /home/tornetgen/consensuses-2020-05 /home/tornetgen/server-d
 # Make sure PATH contains the tor binaries, otherwise this will fail.
 RUN tornetgen generate /home/tornetgen/tornettools/relayinfo_staging_2020-05-01--2020-05-31.json \
         /home/tornetgen/tornettools/userinfo_staging_2020-05-01--2020-05-31.json \
-        /home/tornetgen/tmodel-ccs2018.github.io --network_scale 0.02 --prefix tornet-0.02
+        /home/tornetgen/tmodel-ccs2018.github.io --network_scale 0.005 --prefix tornet-0.005
 
-CMD cp -r /home/tornetgen/{consensuses-2020-05,server-descriptors-2020-05,torperf-2020-05,userstats-relay-country.csv,tornettools/*.json,tornettools/tornet-0.02} /tor-network-generation/
+CMD cp -r /home/tornetgen/{consensuses-2020-05,server-descriptors-2020-05,torperf-2020-05,userstats-relay-country.csv,tornettools/*.json,tornettools/tornet-0.005} /tor-network-generation/

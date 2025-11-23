@@ -5,7 +5,7 @@ Jan 01 00:00:01.000 [notice] Read configuration file "/experiment/conf/tor.autho
 Jan 01 00:00:01.000 [warn] Path for DataDirectory (shadow.data/hosts/4uthority) is relative and will resolve to /experiment/shadow.data/hosts/4uthority. Is this what you wanted?
 Jan 01 00:00:01.000 [warn] Path for ServerDNSResolvConfFile (conf/shadowresolv.conf) is relative and will resolve to /experiment/conf/shadowresolv.conf. Is this what you wanted?
 Jan 01 00:00:01.000 [warn] Path for V3BandwidthsFile (shadow.data/hosts/torflowauthority/v3bw) is relative and will resolve to /experiment/shadow.data/hosts/torflowauthority/v3bw. Is this what you wanted?
-Jan 01 00:00:01.000 [notice] Based on detected system memory, MaxMemInQueues is set to 6365 MB. You can override this by setting MaxMemInQueues by hand.
+Jan 01 00:00:01.000 [notice] Based on detected system memory, MaxMemInQueues is set to 6066 MB. You can override this by setting MaxMemInQueues by hand.
 Jan 01 00:00:01.000 [warn] ControlPort is open, but no authentication method has been configured.  This means that any program on your computer can reconfigure your Tor.  That's bad!  You should upgrade your Tor controller as soon as possible.
 Jan 01 00:00:01.000 [warn] You have used DirAuthority or AlternateDirAuthority to specify alternate directory authorities in your configuration. This is potentially dangerous: it can make you look different from all other Tor users, and hurt your anonymity. Even if you've specified the same authorities as Tor uses by default, the defaults could change in the future. Be sure you know what you're doing.
 Jan 01 00:00:01.000 [warn] TestingTorNetwork is set. This will make your node almost unusable in the public Tor network, and is therefore only advised if you are building a testing Tor network!
@@ -15,8 +15,10 @@ Jan 01 00:00:01.000 [notice] Opening OR listener on 0.0.0.0:9111
 Jan 01 00:00:01.000 [notice] Opened OR listener on 0.0.0.0:9111
 Jan 01 00:00:01.000 [notice] Opening Directory listener on 0.0.0.0:9112
 Jan 01 00:00:01.000 [notice] Opened Directory listener on 0.0.0.0:9112
+Jan 01 00:00:01.000 [warn] Fixing permissions on directory shadow.data/hosts/4uthority
+Jan 01 00:00:01.000 [warn] Fixing permissions on directory shadow.data/hosts/4uthority/keys
 Jan 01 00:00:01.000 [warn] Your log may contain sensitive information - you disabled SafeLogging, and you're logging more than "notice". Don't log unless it serves an important reason. Overwrite the log afterwards.
-Jan 01 00:00:01.000 [info] options_commit_listener_transaction(): Recomputed OOS thresholds: ConnLimit 1000, ConnLimit_ 1048544, ConnLimit_high_thresh 1048480, ConnLimit_low_thresh 786408
+Jan 01 00:00:01.000 [info] options_commit_listener_transaction(): Recomputed OOS thresholds: ConnLimit 1000, ConnLimit_ 524256, ConnLimit_high_thresh 524192, ConnLimit_low_thresh 393192
 Jan 01 00:00:01.000 [info] crypto_openssl_late_init(): NOT using OpenSSL engine support.
 Jan 01 00:00:01.000 [notice] It appears that one of our engines has provided a replacement the OpenSSL RNG. Resetting it to the default implementation.
 Jan 01 00:00:01.000 [info] evaluate_evp_for_aes(): This version of OpenSSL has a known-good EVP counter-mode implementation. Using it.
@@ -101,7 +103,7 @@ Jan 01 00:00:01.000 [info] Choosing expected valid-after time as 2000-01-01 00:0
 Jan 01 00:00:01.000 [info] sr_state_update(): SR: State prepared for upcoming voting period (2000-01-01 00:02:30). Upcoming phase is commit (counters: 1 commit & 0 reveal rounds).
 Jan 01 00:00:01.000 [info] configure_nameservers(): Parsing resolver configuration in 'conf/shadowresolv.conf'
 Jan 01 00:00:01.000 [info] eventdns: Parsing resolv.conf file conf/shadowresolv.conf
-Jan 01 00:00:01.000 [info] eventdns: Added nameserver 127.0.0.1:53 as 0x55d10a5c3230
+Jan 01 00:00:01.000 [info] eventdns: Added nameserver 127.0.0.1:53 as 0x5735b9a23c00
 Jan 01 00:00:01.000 [info] eventdns: Setting maximum allowed timeouts to 255
 Jan 01 00:00:01.000 [info] eventdns: Setting maximum inflight requests to 8192
 Jan 01 00:00:01.000 [info] eventdns: Setting timeout to 5
@@ -677,36 +679,36 @@ Jan 01 00:01:01.001 [warn] We just marked ourself as down. Are your external add
 Jan 01 00:01:01.001 [warn] Received http status code 404 ("Not found") from server '100.0.0.1:9112' while fetching consensus directory.
 Jan 01 00:01:01.001 [warn] We just marked ourself as down. Are your external addresses reachable?
 Jan 01 00:01:01.051 [info] connection_or_set_canonical(): Channel 0 chose an idle timeout of 234.
-Jan 01 00:01:01.051 [info] connection_or_set_identity_digest(): Set identity digest for 0x55d10c212800 ((null)): 3FB0BD7827C760FE7F9DD810FCB10322D63AB4CF VTwev79utz2TlRZhQHiyrfRuhpItsENbKk6h1GpGfwQ.
+Jan 01 00:01:01.051 [info] connection_or_set_identity_digest(): Set identity digest for 0x5735bb6dbc00 ((null)): 3FB0BD7827C760FE7F9DD810FCB10322D63AB4CF VTwev79utz2TlRZhQHiyrfRuhpItsENbKk6h1GpGfwQ.
 Jan 01 00:01:01.051 [info] connection_or_set_identity_digest():    (Previously: 0000000000000000000000000000000000000000 <unset>)
 Jan 01 00:01:01.051 [info] connection_or_set_canonical(): Channel 2 chose an idle timeout of 3294.
 Jan 01 00:01:01.051 [info] dirserv_add_descriptor(): Added descriptor from 'middle1' (source: 100.0.0.3): Descriptor accepted.
 Jan 01 00:01:01.051 [info] connection_or_set_canonical(): Channel 0 chose an idle timeout of 248.
-Jan 01 00:01:01.051 [info] connection_or_set_identity_digest(): Set identity digest for 0x55d10c1a63a0 ((null)): FF197204099FA0E507FA46D41FED97D3337B4BAA VRly9OKfuzWTFF+PYPtPR2Mfy+fhhfgzZv139sFXOj4.
+Jan 01 00:01:01.051 [info] connection_or_set_identity_digest(): Set identity digest for 0x5735bb653eb0 ((null)): FF197204099FA0E507FA46D41FED97D3337B4BAA VRly9OKfuzWTFF+PYPtPR2Mfy+fhhfgzZv139sFXOj4.
 Jan 01 00:01:01.051 [info] connection_or_set_identity_digest():    (Previously: 0000000000000000000000000000000000000000 <unset>)
 Jan 01 00:01:01.051 [info] connection_or_set_canonical(): Channel 3 chose an idle timeout of 3080.
 Jan 01 00:01:01.051 [info] dirserv_add_descriptor(): Added descriptor from 'middle2' (source: 100.0.0.4): Descriptor accepted.
 Jan 01 00:01:01.051 [info] connection_or_set_canonical(): Channel 0 chose an idle timeout of 206.
-Jan 01 00:01:01.051 [info] connection_or_set_identity_digest(): Set identity digest for 0x55d10c2d2990 ((null)): 4EBB385C80A2CA5D671E16F1C722FBFB5F176891 LW9cgGaOB6qz9wyN4sh3tx2Yrc9pv8OBTkV2T66H9zc.
+Jan 01 00:01:01.051 [info] connection_or_set_identity_digest(): Set identity digest for 0x5735bb5eee70 ((null)): 4EBB385C80A2CA5D671E16F1C722FBFB5F176891 LW9cgGaOB6qz9wyN4sh3tx2Yrc9pv8OBTkV2T66H9zc.
 Jan 01 00:01:01.051 [info] connection_or_set_identity_digest():    (Previously: 0000000000000000000000000000000000000000 <unset>)
 Jan 01 00:01:01.051 [info] connection_or_set_canonical(): Channel 4 chose an idle timeout of 4414.
 Jan 01 00:01:01.051 [info] dirserv_add_descriptor(): Added descriptor from 'guard' (source: 100.0.0.2): Descriptor accepted.
 Jan 01 00:01:01.131 [info] channel_tls_process_versions_cell(): Negotiated version 5 with 100.0.0.3:9111; Sending cells: CERTS
-Jan 01 00:01:01.131 [info] connection_or_client_learned_peer_id(): learned peer id for 0x55d10c212800 (100.0.0.3): 3FB0BD7827C760FE7F9DD810FCB10322D63AB4CF, VTwev79utz2TlRZhQHiyrfRuhpItsENbKk6h1GpGfwQ
+Jan 01 00:01:01.131 [info] connection_or_client_learned_peer_id(): learned peer id for 0x5735bb6dbc00 (100.0.0.3): 3FB0BD7827C760FE7F9DD810FCB10322D63AB4CF, VTwev79utz2TlRZhQHiyrfRuhpItsENbKk6h1GpGfwQ
 Jan 01 00:01:01.131 [info] dirserv_orconn_tls_done(): Found router $3FB0BD7827C760FE7F9DD810FCB10322D63AB4CF~middle1 at 100.0.0.3 to be reachable at 100.0.0.3:9111. Yay.
 Jan 01 00:01:01.131 [info] rep_hist_note_router_reachable(): Router 3FB0BD7827C760FE7F9DD810FCB10322D63AB4CF is now Running; it was previously untracked
 Jan 01 00:01:01.131 [info] channel_tls_process_certs_cell(): Got some good certificates from 100.0.0.3:9111: Authenticated it with RSA and Ed25519
 Jan 01 00:01:01.131 [info] channel_tls_process_auth_challenge_cell(): Got an AUTH_CHALLENGE cell from 100.0.0.3:9111: Sending authentication type 3
 Jan 01 00:01:01.131 [info] channel_tls_process_netinfo_cell(): Got good NETINFO cell from 100.0.0.3:9111; OR connection is now open, using protocol version 5. Its ID digest is 3FB0BD7827C760FE7F9DD810FCB10322D63AB4CF. Our address is apparently 100.0.0.1.
 Jan 01 00:01:01.131 [info] channel_tls_process_versions_cell(): Negotiated version 5 with 100.0.0.4:9111; Sending cells: CERTS
-Jan 01 00:01:01.131 [info] connection_or_client_learned_peer_id(): learned peer id for 0x55d10c1a63a0 (100.0.0.4): FF197204099FA0E507FA46D41FED97D3337B4BAA, VRly9OKfuzWTFF+PYPtPR2Mfy+fhhfgzZv139sFXOj4
+Jan 01 00:01:01.131 [info] connection_or_client_learned_peer_id(): learned peer id for 0x5735bb653eb0 (100.0.0.4): FF197204099FA0E507FA46D41FED97D3337B4BAA, VRly9OKfuzWTFF+PYPtPR2Mfy+fhhfgzZv139sFXOj4
 Jan 01 00:01:01.131 [info] dirserv_orconn_tls_done(): Found router $FF197204099FA0E507FA46D41FED97D3337B4BAA~middle2 at 100.0.0.4 to be reachable at 100.0.0.4:9111. Yay.
 Jan 01 00:01:01.131 [info] rep_hist_note_router_reachable(): Router FF197204099FA0E507FA46D41FED97D3337B4BAA is now Running; it was previously untracked
 Jan 01 00:01:01.131 [info] channel_tls_process_certs_cell(): Got some good certificates from 100.0.0.4:9111: Authenticated it with RSA and Ed25519
 Jan 01 00:01:01.131 [info] channel_tls_process_auth_challenge_cell(): Got an AUTH_CHALLENGE cell from 100.0.0.4:9111: Sending authentication type 3
 Jan 01 00:01:01.131 [info] channel_tls_process_netinfo_cell(): Got good NETINFO cell from 100.0.0.4:9111; OR connection is now open, using protocol version 5. Its ID digest is FF197204099FA0E507FA46D41FED97D3337B4BAA. Our address is apparently 100.0.0.1.
 Jan 01 00:01:01.131 [info] channel_tls_process_versions_cell(): Negotiated version 5 with 100.0.0.2:9111; Sending cells: CERTS
-Jan 01 00:01:01.131 [info] connection_or_client_learned_peer_id(): learned peer id for 0x55d10c2d2990 (100.0.0.2): 4EBB385C80A2CA5D671E16F1C722FBFB5F176891, LW9cgGaOB6qz9wyN4sh3tx2Yrc9pv8OBTkV2T66H9zc
+Jan 01 00:01:01.131 [info] connection_or_client_learned_peer_id(): learned peer id for 0x5735bb5eee70 (100.0.0.2): 4EBB385C80A2CA5D671E16F1C722FBFB5F176891, LW9cgGaOB6qz9wyN4sh3tx2Yrc9pv8OBTkV2T66H9zc
 Jan 01 00:01:01.131 [info] dirserv_orconn_tls_done(): Found router $4EBB385C80A2CA5D671E16F1C722FBFB5F176891~guard at 100.0.0.2 to be reachable at 100.0.0.2:9111. Yay.
 Jan 01 00:01:01.131 [info] rep_hist_note_router_reachable(): Router 4EBB385C80A2CA5D671E16F1C722FBFB5F176891 is now Running; it was previously untracked
 Jan 01 00:01:01.131 [info] channel_tls_process_certs_cell(): Got some good certificates from 100.0.0.2:9111: Authenticated it with RSA and Ed25519
@@ -2895,45 +2897,45 @@ Jan 01 00:10:00.030 [info] store_multiple(): Adding consensus diff from DC785AF7
 Jan 01 00:10:00.030 [info] store_multiple(): Adding consensus diff from 9B37C2C812EBD1D262DEBE4C13051754461E46262C837B1BC33ED613B7C6958E to 48486127DCDA9AE1DBBDB058AB2110505974ED7, compressed with identity
 Jan 01 00:10:00.030 [info] store_multiple(): Adding consensus diff from 9B37C2C812EBD1D262DEBE4C13051754461E46262C837B1BC33ED613B7C6958E to 48486127DCDA9AE1DBBDB058AB2110505974ED7, compressed with gzip
 Jan 01 00:10:01.030 [info] connection_or_set_canonical(): Channel 0 chose an idle timeout of 180.
-Jan 01 00:10:01.030 [info] channel_register(): Channel 0x55d114f6b0b0 (global ID 6) in state opening (1) registered with no identity digest
+Jan 01 00:10:01.030 [info] channel_register(): Channel 0x5735c4850690 (global ID 6) in state opening (1) registered with no identity digest
 Jan 01 00:10:01.030 [info] connection_or_set_canonical(): Channel 0 chose an idle timeout of 184.
-Jan 01 00:10:01.030 [info] channel_register(): Channel 0x55d114fdcdf0 (global ID 7) in state opening (1) registered with no identity digest
+Jan 01 00:10:01.030 [info] channel_register(): Channel 0x5735c48d7bc0 (global ID 7) in state opening (1) registered with no identity digest
 Jan 01 00:10:01.030 [info] connection_or_set_canonical(): Channel 0 chose an idle timeout of 264.
-Jan 01 00:10:01.030 [info] channel_register(): Channel 0x55d114fe64d0 (global ID 8) in state opening (1) registered with no identity digest
+Jan 01 00:10:01.030 [info] channel_register(): Channel 0x5735c492f950 (global ID 8) in state opening (1) registered with no identity digest
 Jan 01 00:10:01.030 [info] connection_or_set_canonical(): Channel 0 chose an idle timeout of 184.
-Jan 01 00:10:01.030 [info] channel_register(): Channel 0x55d114ff3610 (global ID 9) in state opening (1) registered with no identity digest
+Jan 01 00:10:01.030 [info] channel_register(): Channel 0x5735c493eb90 (global ID 9) in state opening (1) registered with no identity digest
 Jan 01 00:10:01.030 [info] connection_or_set_canonical(): Channel 0 chose an idle timeout of 228.
-Jan 01 00:10:01.030 [info] channel_register(): Channel 0x55d114fe5470 (global ID 10) in state opening (1) registered with no identity digest
+Jan 01 00:10:01.030 [info] channel_register(): Channel 0x5735c492e900 (global ID 10) in state opening (1) registered with no identity digest
 Jan 01 00:10:01.030 [info] connection_or_set_canonical(): Channel 0 chose an idle timeout of 206.
-Jan 01 00:10:01.030 [info] channel_register(): Channel 0x55d114fffda0 (global ID 11) in state opening (1) registered with no identity digest
+Jan 01 00:10:01.030 [info] channel_register(): Channel 0x5735c49558f0 (global ID 11) in state opening (1) registered with no identity digest
 Jan 01 00:10:01.030 [info] connection_or_set_canonical(): Channel 0 chose an idle timeout of 238.
-Jan 01 00:10:01.030 [info] channel_register(): Channel 0x55d11500b2d0 (global ID 12) in state opening (1) registered with no identity digest
+Jan 01 00:10:01.030 [info] channel_register(): Channel 0x5735c495faf0 (global ID 12) in state opening (1) registered with no identity digest
 Jan 01 00:10:01.030 [info] connection_or_set_canonical(): Channel 0 chose an idle timeout of 214.
-Jan 01 00:10:01.030 [info] channel_register(): Channel 0x55d115017570 (global ID 13) in state opening (1) registered with no identity digest
+Jan 01 00:10:01.030 [info] channel_register(): Channel 0x5735c49334d0 (global ID 13) in state opening (1) registered with no identity digest
 Jan 01 00:10:01.030 [info] connection_or_set_canonical(): Channel 0 chose an idle timeout of 244.
-Jan 01 00:10:01.030 [info] channel_register(): Channel 0x55d11502cf70 (global ID 14) in state opening (1) registered with no identity digest
+Jan 01 00:10:01.030 [info] channel_register(): Channel 0x5735c49760e0 (global ID 14) in state opening (1) registered with no identity digest
 Jan 01 00:10:01.030 [info] connection_or_set_canonical(): Channel 0 chose an idle timeout of 194.
-Jan 01 00:10:01.030 [info] channel_register(): Channel 0x55d115022950 (global ID 15) in state opening (1) registered with no identity digest
+Jan 01 00:10:01.030 [info] channel_register(): Channel 0x5735c4981960 (global ID 15) in state opening (1) registered with no identity digest
 Jan 01 00:10:01.030 [info] connection_or_set_canonical(): Channel 0 chose an idle timeout of 262.
-Jan 01 00:10:01.030 [info] channel_register(): Channel 0x55d115043940 (global ID 16) in state opening (1) registered with no identity digest
+Jan 01 00:10:01.030 [info] channel_register(): Channel 0x5735c498ce50 (global ID 16) in state opening (1) registered with no identity digest
 Jan 01 00:10:01.030 [info] connection_or_set_canonical(): Channel 0 chose an idle timeout of 196.
-Jan 01 00:10:01.030 [info] channel_register(): Channel 0x55d11504ec40 (global ID 17) in state opening (1) registered with no identity digest
+Jan 01 00:10:01.030 [info] channel_register(): Channel 0x5735c4998210 (global ID 17) in state opening (1) registered with no identity digest
 Jan 01 00:10:01.030 [info] connection_or_set_canonical(): Channel 0 chose an idle timeout of 182.
-Jan 01 00:10:01.030 [info] channel_register(): Channel 0x55d115059f00 (global ID 18) in state opening (1) registered with no identity digest
+Jan 01 00:10:01.030 [info] channel_register(): Channel 0x5735c496b280 (global ID 18) in state opening (1) registered with no identity digest
 Jan 01 00:10:01.030 [info] connection_or_set_canonical(): Channel 0 chose an idle timeout of 238.
-Jan 01 00:10:01.030 [info] channel_register(): Channel 0x55d115038820 (global ID 19) in state opening (1) registered with no identity digest
+Jan 01 00:10:01.030 [info] channel_register(): Channel 0x5735c49ae710 (global ID 19) in state opening (1) registered with no identity digest
 Jan 01 00:10:01.030 [info] connection_or_set_canonical(): Channel 0 chose an idle timeout of 184.
-Jan 01 00:10:01.030 [info] channel_register(): Channel 0x55d1150704c0 (global ID 20) in state opening (1) registered with no identity digest
+Jan 01 00:10:01.030 [info] channel_register(): Channel 0x5735c49a3df0 (global ID 20) in state opening (1) registered with no identity digest
 Jan 01 00:10:01.030 [info] connection_or_set_canonical(): Channel 0 chose an idle timeout of 190.
-Jan 01 00:10:01.030 [info] channel_register(): Channel 0x55d1150658f0 (global ID 21) in state opening (1) registered with no identity digest
+Jan 01 00:10:01.030 [info] channel_register(): Channel 0x5735c49c4bb0 (global ID 21) in state opening (1) registered with no identity digest
 Jan 01 00:10:01.030 [info] connection_or_set_canonical(): Channel 0 chose an idle timeout of 230.
-Jan 01 00:10:01.030 [info] channel_register(): Channel 0x55d115086ac0 (global ID 22) in state opening (1) registered with no identity digest
+Jan 01 00:10:01.030 [info] channel_register(): Channel 0x5735c49cfff0 (global ID 22) in state opening (1) registered with no identity digest
 Jan 01 00:10:01.030 [info] connection_or_set_canonical(): Channel 0 chose an idle timeout of 228.
-Jan 01 00:10:01.030 [info] channel_register(): Channel 0x55d11507c010 (global ID 23) in state opening (1) registered with no identity digest
+Jan 01 00:10:01.030 [info] channel_register(): Channel 0x5735c49b9d30 (global ID 23) in state opening (1) registered with no identity digest
 Jan 01 00:10:01.030 [info] connection_or_set_canonical(): Channel 0 chose an idle timeout of 234.
-Jan 01 00:10:01.030 [info] channel_register(): Channel 0x55d11509d090 (global ID 24) in state opening (1) registered with no identity digest
+Jan 01 00:10:01.030 [info] channel_register(): Channel 0x5735c49dbfd0 (global ID 24) in state opening (1) registered with no identity digest
 Jan 01 00:10:01.030 [info] connection_or_set_canonical(): Channel 0 chose an idle timeout of 240.
-Jan 01 00:10:01.030 [info] channel_register(): Channel 0x55d1150a8a20 (global ID 25) in state opening (1) registered with no identity digest
+Jan 01 00:10:01.030 [info] channel_register(): Channel 0x5735c49f1d10 (global ID 25) in state opening (1) registered with no identity digest
 Jan 01 00:10:01.070 [info] channel_tls_process_versions_cell(): Negotiated version 5 with 11.0.0.1:63076; Sending cells: VERSIONS CERTS AUTH_CHALLENGE NETINFO
 Jan 01 00:10:01.070 [info] channel_tls_process_versions_cell(): Negotiated version 5 with 11.0.0.2:33420; Sending cells: VERSIONS CERTS AUTH_CHALLENGE NETINFO
 Jan 01 00:10:01.070 [info] channel_tls_process_versions_cell(): Negotiated version 5 with 11.0.0.3:25616; Sending cells: VERSIONS CERTS AUTH_CHALLENGE NETINFO
@@ -2954,7 +2956,7 @@ Jan 01 00:10:01.071 [info] channel_tls_process_versions_cell(): Negotiated versi
 Jan 01 00:10:01.071 [info] channel_tls_process_versions_cell(): Negotiated version 5 with 11.0.0.18:56885; Sending cells: VERSIONS CERTS AUTH_CHALLENGE NETINFO
 Jan 01 00:10:01.071 [info] channel_tls_process_versions_cell(): Negotiated version 5 with 11.0.0.19:32473; Sending cells: VERSIONS CERTS AUTH_CHALLENGE NETINFO
 Jan 01 00:10:01.071 [info] channel_tls_process_versions_cell(): Negotiated version 5 with 11.0.0.20:15471; Sending cells: VERSIONS CERTS AUTH_CHALLENGE NETINFO
-Jan 01 00:10:01.090 [info] connection_or_set_identity_digest(): Set identity digest for 0x55d114fdcca0 ("11.0.0.2"): 0000000000000000000000000000000000000000 <null>.
+Jan 01 00:10:01.090 [info] connection_or_set_identity_digest(): Set identity digest for 0x5735c483e800 ("11.0.0.2"): 0000000000000000000000000000000000000000 <null>.
 Jan 01 00:10:01.090 [info] connection_or_set_identity_digest():    (Previously: 0000000000000000000000000000000000000000 <unset>)
 Jan 01 00:10:01.090 [info] channel_tls_process_netinfo_cell(): Got good NETINFO cell from 11.0.0.2:33420; OR connection is now open, using protocol version 5. Its ID digest is 0000000000000000000000000000000000000000. Our address is apparently 100.0.0.1.
 Jan 01 00:10:01.090 [info] channelpadding_update_padding_for_channel(): Negotiated padding=0, lo=1500, hi=1500 on 7
@@ -2974,79 +2976,79 @@ Jan 01 00:10:01.090 [info] tor_addr_parse_mask_ports(): '*:6699' expands into ru
 Jan 01 00:10:01.090 [info] tor_addr_parse_mask_ports(): '*:6881-6999' expands into rules which apply to all IPv4 and IPv6 addresses. (Use accept/reject *4:* for IPv4 or accept[6]/reject[6] *6:* for IPv6.)
 Jan 01 00:10:01.090 [info] tor_addr_parse_mask_ports(): '*:*' expands into rules which apply to all IPv4 and IPv6 addresses. (Use accept/reject *4:* for IPv4 or accept[6]/reject[6] *6:* for IPv6.)
 Jan 01 00:10:01.090 [info] extrainfo_dump_to_string_stats_helper(): Adding stats to extra-info descriptor.
-Jan 01 00:10:01.090 [info] connection_or_set_identity_digest(): Set identity digest for 0x55d114fe3be0 ("11.0.0.3"): 0000000000000000000000000000000000000000 <null>.
+Jan 01 00:10:01.090 [info] connection_or_set_identity_digest(): Set identity digest for 0x5735c48386b0 ("11.0.0.3"): 0000000000000000000000000000000000000000 <null>.
 Jan 01 00:10:01.090 [info] connection_or_set_identity_digest():    (Previously: 0000000000000000000000000000000000000000 <unset>)
 Jan 01 00:10:01.090 [info] channel_tls_process_netinfo_cell(): Got good NETINFO cell from 11.0.0.3:25616; OR connection is now open, using protocol version 5. Its ID digest is 0000000000000000000000000000000000000000. Our address is apparently 100.0.0.1.
 Jan 01 00:10:01.090 [info] channelpadding_update_padding_for_channel(): Negotiated padding=0, lo=1500, hi=1500 on 8
-Jan 01 00:10:01.090 [info] connection_or_set_identity_digest(): Set identity digest for 0x55d114fea0e0 ("11.0.0.4"): 0000000000000000000000000000000000000000 <null>.
+Jan 01 00:10:01.090 [info] connection_or_set_identity_digest(): Set identity digest for 0x5735c47fbcb0 ("11.0.0.4"): 0000000000000000000000000000000000000000 <null>.
 Jan 01 00:10:01.090 [info] connection_or_set_identity_digest():    (Previously: 0000000000000000000000000000000000000000 <unset>)
 Jan 01 00:10:01.090 [info] channel_tls_process_netinfo_cell(): Got good NETINFO cell from 11.0.0.4:37467; OR connection is now open, using protocol version 5. Its ID digest is 0000000000000000000000000000000000000000. Our address is apparently 100.0.0.1.
 Jan 01 00:10:01.090 [info] channelpadding_update_padding_for_channel(): Negotiated padding=0, lo=1500, hi=1500 on 9
-Jan 01 00:10:01.090 [info] connection_or_set_identity_digest(): Set identity digest for 0x55d114ffa550 ("11.0.0.5"): 0000000000000000000000000000000000000000 <null>.
+Jan 01 00:10:01.090 [info] connection_or_set_identity_digest(): Set identity digest for 0x5735c49407f0 ("11.0.0.5"): 0000000000000000000000000000000000000000 <null>.
 Jan 01 00:10:01.090 [info] connection_or_set_identity_digest():    (Previously: 0000000000000000000000000000000000000000 <unset>)
 Jan 01 00:10:01.090 [info] channel_tls_process_netinfo_cell(): Got good NETINFO cell from 11.0.0.5:51078; OR connection is now open, using protocol version 5. Its ID digest is 0000000000000000000000000000000000000000. Our address is apparently 100.0.0.1.
 Jan 01 00:10:01.090 [info] channelpadding_update_padding_for_channel(): Negotiated padding=0, lo=1500, hi=1500 on 10
-Jan 01 00:10:01.090 [info] connection_or_set_identity_digest(): Set identity digest for 0x55d114ef4c00 ("11.0.0.1"): 0000000000000000000000000000000000000000 <null>.
+Jan 01 00:10:01.090 [info] connection_or_set_identity_digest(): Set identity digest for 0x5735c484e800 ("11.0.0.1"): 0000000000000000000000000000000000000000 <null>.
 Jan 01 00:10:01.090 [info] connection_or_set_identity_digest():    (Previously: 0000000000000000000000000000000000000000 <unset>)
 Jan 01 00:10:01.090 [info] channel_tls_process_netinfo_cell(): Got good NETINFO cell from 11.0.0.1:63076; OR connection is now open, using protocol version 5. Its ID digest is 0000000000000000000000000000000000000000. Our address is apparently 100.0.0.1.
 Jan 01 00:10:01.090 [info] channelpadding_update_padding_for_channel(): Negotiated padding=0, lo=1500, hi=1500 on 6
-Jan 01 00:10:01.091 [info] connection_or_set_identity_digest(): Set identity digest for 0x55d11502af00 ("11.0.0.9"): 0000000000000000000000000000000000000000 <null>.
+Jan 01 00:10:01.091 [info] connection_or_set_identity_digest(): Set identity digest for 0x5735c4973f50 ("11.0.0.9"): 0000000000000000000000000000000000000000 <null>.
 Jan 01 00:10:01.091 [info] connection_or_set_identity_digest():    (Previously: 0000000000000000000000000000000000000000 <unset>)
 Jan 01 00:10:01.091 [info] channel_tls_process_netinfo_cell(): Got good NETINFO cell from 11.0.0.9:55192; OR connection is now open, using protocol version 5. Its ID digest is 0000000000000000000000000000000000000000. Our address is apparently 100.0.0.1.
 Jan 01 00:10:01.091 [info] channelpadding_update_padding_for_channel(): Negotiated padding=0, lo=1500, hi=1500 on 14
-Jan 01 00:10:01.091 [info] connection_or_set_identity_digest(): Set identity digest for 0x55d114ffd580 ("11.0.0.6"): 0000000000000000000000000000000000000000 <null>.
+Jan 01 00:10:01.091 [info] connection_or_set_identity_digest(): Set identity digest for 0x5735c492f3b0 ("11.0.0.6"): 0000000000000000000000000000000000000000 <null>.
 Jan 01 00:10:01.091 [info] connection_or_set_identity_digest():    (Previously: 0000000000000000000000000000000000000000 <unset>)
 Jan 01 00:10:01.091 [info] channel_tls_process_netinfo_cell(): Got good NETINFO cell from 11.0.0.6:21930; OR connection is now open, using protocol version 5. Its ID digest is 0000000000000000000000000000000000000000. Our address is apparently 100.0.0.1.
 Jan 01 00:10:01.091 [info] channelpadding_update_padding_for_channel(): Negotiated padding=0, lo=1500, hi=1500 on 11
-Jan 01 00:10:01.091 [info] connection_or_set_identity_digest(): Set identity digest for 0x55d115001c20 ("11.0.0.7"): 0000000000000000000000000000000000000000 <null>.
+Jan 01 00:10:01.091 [info] connection_or_set_identity_digest(): Set identity digest for 0x5735c4957510 ("11.0.0.7"): 0000000000000000000000000000000000000000 <null>.
 Jan 01 00:10:01.091 [info] connection_or_set_identity_digest():    (Previously: 0000000000000000000000000000000000000000 <unset>)
 Jan 01 00:10:01.091 [info] channel_tls_process_netinfo_cell(): Got good NETINFO cell from 11.0.0.7:45354; OR connection is now open, using protocol version 5. Its ID digest is 0000000000000000000000000000000000000000. Our address is apparently 100.0.0.1.
 Jan 01 00:10:01.091 [info] channelpadding_update_padding_for_channel(): Negotiated padding=0, lo=1500, hi=1500 on 12
-Jan 01 00:10:01.091 [info] connection_or_set_identity_digest(): Set identity digest for 0x55d115015590 ("11.0.0.8"): 0000000000000000000000000000000000000000 <null>.
+Jan 01 00:10:01.091 [info] connection_or_set_identity_digest(): Set identity digest for 0x5735c4931400 ("11.0.0.8"): 0000000000000000000000000000000000000000 <null>.
 Jan 01 00:10:01.091 [info] connection_or_set_identity_digest():    (Previously: 0000000000000000000000000000000000000000 <unset>)
 Jan 01 00:10:01.091 [info] channel_tls_process_netinfo_cell(): Got good NETINFO cell from 11.0.0.8:24822; OR connection is now open, using protocol version 5. Its ID digest is 0000000000000000000000000000000000000000. Our address is apparently 100.0.0.1.
 Jan 01 00:10:01.091 [info] channelpadding_update_padding_for_channel(): Negotiated padding=0, lo=1500, hi=1500 on 13
-Jan 01 00:10:01.092 [info] connection_or_set_identity_digest(): Set identity digest for 0x55d11502ec00 ("11.0.0.10"): 0000000000000000000000000000000000000000 <null>.
+Jan 01 00:10:01.092 [info] connection_or_set_identity_digest(): Set identity digest for 0x5735c4977d70 ("11.0.0.10"): 0000000000000000000000000000000000000000 <null>.
 Jan 01 00:10:01.092 [info] connection_or_set_identity_digest():    (Previously: 0000000000000000000000000000000000000000 <unset>)
 Jan 01 00:10:01.092 [info] channel_tls_process_netinfo_cell(): Got good NETINFO cell from 11.0.0.10:33385; OR connection is now open, using protocol version 5. Its ID digest is 0000000000000000000000000000000000000000. Our address is apparently 100.0.0.1.
 Jan 01 00:10:01.092 [info] channelpadding_update_padding_for_channel(): Negotiated padding=0, lo=1500, hi=1500 on 15
-Jan 01 00:10:01.092 [info] connection_or_set_identity_digest(): Set identity digest for 0x55d115024560 ("11.0.0.11"): 0000000000000000000000000000000000000000 <null>.
+Jan 01 00:10:01.092 [info] connection_or_set_identity_digest(): Set identity digest for 0x5735c498ad80 ("11.0.0.11"): 0000000000000000000000000000000000000000 <null>.
 Jan 01 00:10:01.092 [info] connection_or_set_identity_digest():    (Previously: 0000000000000000000000000000000000000000 <unset>)
 Jan 01 00:10:01.092 [info] channel_tls_process_netinfo_cell(): Got good NETINFO cell from 11.0.0.11:36253; OR connection is now open, using protocol version 5. Its ID digest is 0000000000000000000000000000000000000000. Our address is apparently 100.0.0.1.
 Jan 01 00:10:01.092 [info] channelpadding_update_padding_for_channel(): Negotiated padding=0, lo=1500, hi=1500 on 16
-Jan 01 00:10:01.092 [info] connection_or_set_identity_digest(): Set identity digest for 0x55d1150456a0 ("11.0.0.12"): 0000000000000000000000000000000000000000 <null>.
+Jan 01 00:10:01.092 [info] connection_or_set_identity_digest(): Set identity digest for 0x5735c498ebb0 ("11.0.0.12"): 0000000000000000000000000000000000000000 <null>.
 Jan 01 00:10:01.092 [info] connection_or_set_identity_digest():    (Previously: 0000000000000000000000000000000000000000 <unset>)
 Jan 01 00:10:01.092 [info] channel_tls_process_netinfo_cell(): Got good NETINFO cell from 11.0.0.12:55154; OR connection is now open, using protocol version 5. Its ID digest is 0000000000000000000000000000000000000000. Our address is apparently 100.0.0.1.
 Jan 01 00:10:01.092 [info] channelpadding_update_padding_for_channel(): Negotiated padding=0, lo=1500, hi=1500 on 17
-Jan 01 00:10:01.092 [info] connection_or_set_identity_digest(): Set identity digest for 0x55d115050940 ("11.0.0.13"): 0000000000000000000000000000000000000000 <null>.
+Jan 01 00:10:01.092 [info] connection_or_set_identity_digest(): Set identity digest for 0x5735c4999e20 ("11.0.0.13"): 0000000000000000000000000000000000000000 <null>.
 Jan 01 00:10:01.092 [info] connection_or_set_identity_digest():    (Previously: 0000000000000000000000000000000000000000 <unset>)
 Jan 01 00:10:01.092 [info] channel_tls_process_netinfo_cell(): Got good NETINFO cell from 11.0.0.13:21952; OR connection is now open, using protocol version 5. Its ID digest is 0000000000000000000000000000000000000000. Our address is apparently 100.0.0.1.
 Jan 01 00:10:01.092 [info] channelpadding_update_padding_for_channel(): Negotiated padding=0, lo=1500, hi=1500 on 18
-Jan 01 00:10:01.092 [info] connection_or_set_identity_digest(): Set identity digest for 0x55d115036820 ("11.0.0.14"): 0000000000000000000000000000000000000000 <null>.
+Jan 01 00:10:01.092 [info] connection_or_set_identity_digest(): Set identity digest for 0x5735c496cf40 ("11.0.0.14"): 0000000000000000000000000000000000000000 <null>.
 Jan 01 00:10:01.092 [info] connection_or_set_identity_digest():    (Previously: 0000000000000000000000000000000000000000 <unset>)
 Jan 01 00:10:01.092 [info] channel_tls_process_netinfo_cell(): Got good NETINFO cell from 11.0.0.14:51535; OR connection is now open, using protocol version 5. Its ID digest is 0000000000000000000000000000000000000000. Our address is apparently 100.0.0.1.
 Jan 01 00:10:01.092 [info] channelpadding_update_padding_for_channel(): Negotiated padding=0, lo=1500, hi=1500 on 19
-Jan 01 00:10:01.093 [info] connection_or_set_identity_digest(): Set identity digest for 0x55d115072150 ("11.0.0.16"): 0000000000000000000000000000000000000000 <null>.
+Jan 01 00:10:01.093 [info] connection_or_set_identity_digest(): Set identity digest for 0x5735c49a5a50 ("11.0.0.16"): 0000000000000000000000000000000000000000 <null>.
 Jan 01 00:10:01.093 [info] connection_or_set_identity_digest():    (Previously: 0000000000000000000000000000000000000000 <unset>)
 Jan 01 00:10:01.093 [info] channel_tls_process_netinfo_cell(): Got good NETINFO cell from 11.0.0.16:34561; OR connection is now open, using protocol version 5. Its ID digest is 0000000000000000000000000000000000000000. Our address is apparently 100.0.0.1.
 Jan 01 00:10:01.093 [info] channelpadding_update_padding_for_channel(): Negotiated padding=0, lo=1500, hi=1500 on 21
-Jan 01 00:10:01.093 [info] connection_or_set_identity_digest(): Set identity digest for 0x55d115067680 ("11.0.0.17"): 0000000000000000000000000000000000000000 <null>.
+Jan 01 00:10:01.093 [info] connection_or_set_identity_digest(): Set identity digest for 0x5735c49c6940 ("11.0.0.17"): 0000000000000000000000000000000000000000 <null>.
 Jan 01 00:10:01.093 [info] connection_or_set_identity_digest():    (Previously: 0000000000000000000000000000000000000000 <unset>)
 Jan 01 00:10:01.093 [info] channel_tls_process_netinfo_cell(): Got good NETINFO cell from 11.0.0.17:10942; OR connection is now open, using protocol version 5. Its ID digest is 0000000000000000000000000000000000000000. Our address is apparently 100.0.0.1.
 Jan 01 00:10:01.093 [info] channelpadding_update_padding_for_channel(): Negotiated padding=0, lo=1500, hi=1500 on 22
-Jan 01 00:10:01.093 [info] connection_or_set_identity_digest(): Set identity digest for 0x55d11507a010 ("11.0.0.18"): 0000000000000000000000000000000000000000 <null>.
+Jan 01 00:10:01.093 [info] connection_or_set_identity_digest(): Set identity digest for 0x5735c49d1c70 ("11.0.0.18"): 0000000000000000000000000000000000000000 <null>.
 Jan 01 00:10:01.093 [info] connection_or_set_identity_digest():    (Previously: 0000000000000000000000000000000000000000 <unset>)
 Jan 01 00:10:01.093 [info] channel_tls_process_netinfo_cell(): Got good NETINFO cell from 11.0.0.18:56885; OR connection is now open, using protocol version 5. Its ID digest is 0000000000000000000000000000000000000000. Our address is apparently 100.0.0.1.
 Jan 01 00:10:01.093 [info] channelpadding_update_padding_for_channel(): Negotiated padding=0, lo=1500, hi=1500 on 23
-Jan 01 00:10:01.093 [info] connection_or_set_identity_digest(): Set identity digest for 0x55d11509b060 ("11.0.0.19"): 0000000000000000000000000000000000000000 <null>.
+Jan 01 00:10:01.093 [info] connection_or_set_identity_digest(): Set identity digest for 0x5735c49d9d50 ("11.0.0.19"): 0000000000000000000000000000000000000000 <null>.
 Jan 01 00:10:01.093 [info] connection_or_set_identity_digest():    (Previously: 0000000000000000000000000000000000000000 <unset>)
 Jan 01 00:10:01.093 [info] channel_tls_process_netinfo_cell(): Got good NETINFO cell from 11.0.0.19:32473; OR connection is now open, using protocol version 5. Its ID digest is 0000000000000000000000000000000000000000. Our address is apparently 100.0.0.1.
 Jan 01 00:10:01.093 [info] channelpadding_update_padding_for_channel(): Negotiated padding=0, lo=1500, hi=1500 on 24
-Jan 01 00:10:01.093 [info] connection_or_set_identity_digest(): Set identity digest for 0x55d11506e590 ("11.0.0.15"): 0000000000000000000000000000000000000000 <null>.
+Jan 01 00:10:01.093 [info] connection_or_set_identity_digest(): Set identity digest for 0x5735c49a1e00 ("11.0.0.15"): 0000000000000000000000000000000000000000 <null>.
 Jan 01 00:10:01.093 [info] connection_or_set_identity_digest():    (Previously: 0000000000000000000000000000000000000000 <unset>)
 Jan 01 00:10:01.093 [info] channel_tls_process_netinfo_cell(): Got good NETINFO cell from 11.0.0.15:22239; OR connection is now open, using protocol version 5. Its ID digest is 0000000000000000000000000000000000000000. Our address is apparently 100.0.0.1.
 Jan 01 00:10:01.093 [info] channelpadding_update_padding_for_channel(): Negotiated padding=0, lo=1500, hi=1500 on 20
-Jan 01 00:10:01.094 [info] connection_or_set_identity_digest(): Set identity digest for 0x55d11509ecf0 ("11.0.0.20"): 0000000000000000000000000000000000000000 <null>.
+Jan 01 00:10:01.094 [info] connection_or_set_identity_digest(): Set identity digest for 0x5735c49ef870 ("11.0.0.20"): 0000000000000000000000000000000000000000 <null>.
 Jan 01 00:10:01.094 [info] connection_or_set_identity_digest():    (Previously: 0000000000000000000000000000000000000000 <unset>)
 Jan 01 00:10:01.094 [info] channel_tls_process_netinfo_cell(): Got good NETINFO cell from 11.0.0.20:15471; OR connection is now open, using protocol version 5. Its ID digest is 0000000000000000000000000000000000000000. Our address is apparently 100.0.0.1.
 Jan 01 00:10:01.094 [info] channelpadding_update_padding_for_channel(): Negotiated padding=0, lo=1500, hi=1500 on 25
@@ -3237,13 +3239,13 @@ Jan 01 00:10:21.040 [info] circuit_free_(): Circuit 0 (id: 0) has been freed.
 Jan 01 00:10:32.000 [info] update_consensus_router_descriptor_downloads(): 0 router descriptors downloadable. 0 delayed; 4 present (1 of those were in old_routers); 0 would_reject; 0 wouldnt_use; 0 in progress.
 Jan 01 00:10:32.000 [info] update_extrainfo_downloads(): Extrainfo download status: 0 router with no ei, 5 with present ei, 0 delaying, 0 pending, 1 downloadable, 0 bogus in routers, 0 bogus in old_routers
 Jan 01 00:10:32.000 [info] connection_or_set_canonical(): Channel 0 chose an idle timeout of 222.
-Jan 01 00:10:32.000 [info] connection_or_set_identity_digest(): Set identity digest for 0x55d1152cf110 ((null)): 3FB0BD7827C760FE7F9DD810FCB10322D63AB4CF VTwev79utz2TlRZhQHiyrfRuhpItsENbKk6h1GpGfwQ.
+Jan 01 00:10:32.000 [info] connection_or_set_identity_digest(): Set identity digest for 0x5735bb9a6f50 ((null)): 3FB0BD7827C760FE7F9DD810FCB10322D63AB4CF VTwev79utz2TlRZhQHiyrfRuhpItsENbKk6h1GpGfwQ.
 Jan 01 00:10:32.000 [info] connection_or_set_identity_digest():    (Previously: 0000000000000000000000000000000000000000 <unset>)
 Jan 01 00:10:32.000 [info] connection_or_set_canonical(): Channel 26 chose an idle timeout of 4066.
 Jan 01 00:10:32.001 [info] handle_response_fetch_desc(): Received extra server info (body size 0) from server '100.0.0.1:9112'
 Jan 01 00:10:32.001 [info] handle_response_fetch_desc(): Received http status code 404 ("Servers unavailable") from server '100.0.0.1:9112' while fetching "/tor/server/d/68D0F2199446019EF177269921F006C73860E8EE.z". I'll try again soon.
 Jan 01 00:10:32.080 [info] channel_tls_process_versions_cell(): Negotiated version 5 with 100.0.0.3:9111; Sending cells: CERTS
-Jan 01 00:10:32.080 [info] connection_or_client_learned_peer_id(): learned peer id for 0x55d1152cf110 (100.0.0.3): 3FB0BD7827C760FE7F9DD810FCB10322D63AB4CF, VTwev79utz2TlRZhQHiyrfRuhpItsENbKk6h1GpGfwQ
+Jan 01 00:10:32.080 [info] connection_or_client_learned_peer_id(): learned peer id for 0x5735bb9a6f50 (100.0.0.3): 3FB0BD7827C760FE7F9DD810FCB10322D63AB4CF, VTwev79utz2TlRZhQHiyrfRuhpItsENbKk6h1GpGfwQ
 Jan 01 00:10:32.080 [info] dirserv_orconn_tls_done(): Found router $3FB0BD7827C760FE7F9DD810FCB10322D63AB4CF~middle1 at 100.0.0.3 to be reachable at 100.0.0.3:9111. Yay.
 Jan 01 00:10:32.080 [info] channel_tls_process_certs_cell(): Got some good certificates from 100.0.0.3:9111: Authenticated it with RSA and Ed25519
 Jan 01 00:10:32.080 [info] channel_tls_process_auth_challenge_cell(): Got an AUTH_CHALLENGE cell from 100.0.0.3:9111: Sending authentication type 3
@@ -3752,11 +3754,11 @@ Jan 01 00:13:01.844 [info] connection_free_minimal(): Freeing linked Exit connec
 Jan 01 00:13:01.844 [info] connection_edge_reached_eof(): conn (fd -1) reached eof. Closing.
 Jan 01 00:13:01.844 [info] connection_free_minimal(): Freeing linked Exit connection [open] with 0 bytes on inbuf, 0 on outbuf.
 Jan 01 00:13:02.000 [info] connection_or_set_canonical(): Channel 0 chose an idle timeout of 208.
-Jan 01 00:13:02.000 [info] connection_or_set_identity_digest(): Set identity digest for 0x55d115d11640 ((null)): 4EBB385C80A2CA5D671E16F1C722FBFB5F176891 LW9cgGaOB6qz9wyN4sh3tx2Yrc9pv8OBTkV2T66H9zc.
+Jan 01 00:13:02.000 [info] connection_or_set_identity_digest(): Set identity digest for 0x5735bb902a90 ((null)): 4EBB385C80A2CA5D671E16F1C722FBFB5F176891 LW9cgGaOB6qz9wyN4sh3tx2Yrc9pv8OBTkV2T66H9zc.
 Jan 01 00:13:02.000 [info] connection_or_set_identity_digest():    (Previously: 0000000000000000000000000000000000000000 <unset>)
 Jan 01 00:13:02.000 [info] connection_or_set_canonical(): Channel 27 chose an idle timeout of 3312.
 Jan 01 00:13:02.080 [info] channel_tls_process_versions_cell(): Negotiated version 5 with 100.0.0.2:9111; Sending cells: CERTS
-Jan 01 00:13:02.080 [info] connection_or_client_learned_peer_id(): learned peer id for 0x55d115d11640 (100.0.0.2): 4EBB385C80A2CA5D671E16F1C722FBFB5F176891, LW9cgGaOB6qz9wyN4sh3tx2Yrc9pv8OBTkV2T66H9zc
+Jan 01 00:13:02.080 [info] connection_or_client_learned_peer_id(): learned peer id for 0x5735bb902a90 (100.0.0.2): 4EBB385C80A2CA5D671E16F1C722FBFB5F176891, LW9cgGaOB6qz9wyN4sh3tx2Yrc9pv8OBTkV2T66H9zc
 Jan 01 00:13:02.080 [info] dirserv_orconn_tls_done(): Found router $4EBB385C80A2CA5D671E16F1C722FBFB5F176891~guard at 100.0.0.2 to be reachable at 100.0.0.2:9111. Yay.
 Jan 01 00:13:02.080 [info] channel_tls_process_certs_cell(): Got some good certificates from 100.0.0.2:9111: Authenticated it with RSA and Ed25519
 Jan 01 00:13:02.080 [info] channel_tls_process_auth_challenge_cell(): Got an AUTH_CHALLENGE cell from 100.0.0.2:9111: Sending authentication type 3
@@ -83999,11 +84001,11 @@ Jan 01 00:21:10.020 [info] circuit_free_(): Circuit 0 (id: 0) has been freed.
 Jan 01 00:21:10.030 [info] circuit_mark_for_close_(): Circuit 0 (id: 0) marked for close at /home/shadow/shadow-plugin-tor/build/tor/src/core/or/command.c:673 (orig reason: 512, new reason: 0)
 Jan 01 00:21:10.030 [info] circuit_free_(): Circuit 0 (id: 0) has been freed.
 Jan 01 00:21:12.000 [info] connection_or_set_canonical(): Channel 0 chose an idle timeout of 180.
-Jan 01 00:21:12.000 [info] connection_or_set_identity_digest(): Set identity digest for 0x55d12ed42860 ((null)): FF197204099FA0E507FA46D41FED97D3337B4BAA VRly9OKfuzWTFF+PYPtPR2Mfy+fhhfgzZv139sFXOj4.
+Jan 01 00:21:12.000 [info] connection_or_set_identity_digest(): Set identity digest for 0x5735d3ad6aa0 ((null)): FF197204099FA0E507FA46D41FED97D3337B4BAA VRly9OKfuzWTFF+PYPtPR2Mfy+fhhfgzZv139sFXOj4.
 Jan 01 00:21:12.000 [info] connection_or_set_identity_digest():    (Previously: 0000000000000000000000000000000000000000 <unset>)
 Jan 01 00:21:12.000 [info] connection_or_set_canonical(): Channel 28 chose an idle timeout of 3528.
 Jan 01 00:21:12.080 [info] channel_tls_process_versions_cell(): Negotiated version 5 with 100.0.0.4:9111; Sending cells: CERTS
-Jan 01 00:21:12.080 [info] connection_or_client_learned_peer_id(): learned peer id for 0x55d12ed42860 (100.0.0.4): FF197204099FA0E507FA46D41FED97D3337B4BAA, VRly9OKfuzWTFF+PYPtPR2Mfy+fhhfgzZv139sFXOj4
+Jan 01 00:21:12.080 [info] connection_or_client_learned_peer_id(): learned peer id for 0x5735d3ad6aa0 (100.0.0.4): FF197204099FA0E507FA46D41FED97D3337B4BAA, VRly9OKfuzWTFF+PYPtPR2Mfy+fhhfgzZv139sFXOj4
 Jan 01 00:21:12.080 [info] dirserv_orconn_tls_done(): Found router $FF197204099FA0E507FA46D41FED97D3337B4BAA~middle2 at 100.0.0.4 to be reachable at 100.0.0.4:9111. Yay.
 Jan 01 00:21:12.080 [info] channel_tls_process_certs_cell(): Got some good certificates from 100.0.0.4:9111: Authenticated it with RSA and Ed25519
 Jan 01 00:21:12.080 [info] channel_tls_process_auth_challenge_cell(): Got an AUTH_CHALLENGE cell from 100.0.0.4:9111: Sending authentication type 3
@@ -109138,11 +109140,11 @@ Jan 01 00:31:47.079 [info] circuit_free_(): Circuit 0 (id: 0) has been freed.
 Jan 01 00:31:47.079 [info] circuit_mark_for_close_(): Circuit 0 (id: 0) marked for close at /home/shadow/shadow-plugin-tor/build/tor/src/core/or/command.c:673 (orig reason: 512, new reason: 0)
 Jan 01 00:31:47.079 [info] circuit_free_(): Circuit 0 (id: 0) has been freed.
 Jan 01 00:31:52.000 [info] connection_or_set_canonical(): Channel 0 chose an idle timeout of 246.
-Jan 01 00:31:52.000 [info] connection_or_set_identity_digest(): Set identity digest for 0x55d12639afb0 ((null)): 3FB0BD7827C760FE7F9DD810FCB10322D63AB4CF VTwev79utz2TlRZhQHiyrfRuhpItsENbKk6h1GpGfwQ.
+Jan 01 00:31:52.000 [info] connection_or_set_identity_digest(): Set identity digest for 0x5735db0b4b60 ((null)): 3FB0BD7827C760FE7F9DD810FCB10322D63AB4CF VTwev79utz2TlRZhQHiyrfRuhpItsENbKk6h1GpGfwQ.
 Jan 01 00:31:52.000 [info] connection_or_set_identity_digest():    (Previously: 0000000000000000000000000000000000000000 <unset>)
 Jan 01 00:31:52.000 [info] connection_or_set_canonical(): Channel 29 chose an idle timeout of 3838.
 Jan 01 00:31:52.080 [info] channel_tls_process_versions_cell(): Negotiated version 5 with 100.0.0.3:9111; Sending cells: CERTS
-Jan 01 00:31:52.080 [info] connection_or_client_learned_peer_id(): learned peer id for 0x55d12639afb0 (100.0.0.3): 3FB0BD7827C760FE7F9DD810FCB10322D63AB4CF, VTwev79utz2TlRZhQHiyrfRuhpItsENbKk6h1GpGfwQ
+Jan 01 00:31:52.080 [info] connection_or_client_learned_peer_id(): learned peer id for 0x5735db0b4b60 (100.0.0.3): 3FB0BD7827C760FE7F9DD810FCB10322D63AB4CF, VTwev79utz2TlRZhQHiyrfRuhpItsENbKk6h1GpGfwQ
 Jan 01 00:31:52.080 [info] dirserv_orconn_tls_done(): Found router $3FB0BD7827C760FE7F9DD810FCB10322D63AB4CF~middle1 at 100.0.0.3 to be reachable at 100.0.0.3:9111. Yay.
 Jan 01 00:31:52.080 [info] channel_tls_process_certs_cell(): Got some good certificates from 100.0.0.3:9111: Authenticated it with RSA and Ed25519
 Jan 01 00:31:52.080 [info] channel_tls_process_auth_challenge_cell(): Got an AUTH_CHALLENGE cell from 100.0.0.3:9111: Sending authentication type 3
@@ -119442,11 +119444,11 @@ Jan 01 00:34:20.000 [notice] Choosing valid-after time in vote as 2000-01-01 00:
 Jan 01 00:34:20.000 [info] update_consensus_router_descriptor_downloads(): 0 router descriptors downloadable. 0 delayed; 4 present (0 of those were in old_routers); 0 would_reject; 0 wouldnt_use; 0 in progress.
 Jan 01 00:34:20.000 [notice] Vote posted.
 Jan 01 00:34:22.000 [info] connection_or_set_canonical(): Channel 0 chose an idle timeout of 228.
-Jan 01 00:34:22.000 [info] connection_or_set_identity_digest(): Set identity digest for 0x55d12ea82530 ((null)): 4EBB385C80A2CA5D671E16F1C722FBFB5F176891 LW9cgGaOB6qz9wyN4sh3tx2Yrc9pv8OBTkV2T66H9zc.
+Jan 01 00:34:22.000 [info] connection_or_set_identity_digest(): Set identity digest for 0x5735dbfab460 ((null)): 4EBB385C80A2CA5D671E16F1C722FBFB5F176891 LW9cgGaOB6qz9wyN4sh3tx2Yrc9pv8OBTkV2T66H9zc.
 Jan 01 00:34:22.000 [info] connection_or_set_identity_digest():    (Previously: 0000000000000000000000000000000000000000 <unset>)
 Jan 01 00:34:22.000 [info] connection_or_set_canonical(): Channel 30 chose an idle timeout of 3442.
 Jan 01 00:34:22.080 [info] channel_tls_process_versions_cell(): Negotiated version 5 with 100.0.0.2:9111; Sending cells: CERTS
-Jan 01 00:34:22.080 [info] connection_or_client_learned_peer_id(): learned peer id for 0x55d12ea82530 (100.0.0.2): 4EBB385C80A2CA5D671E16F1C722FBFB5F176891, LW9cgGaOB6qz9wyN4sh3tx2Yrc9pv8OBTkV2T66H9zc
+Jan 01 00:34:22.080 [info] connection_or_client_learned_peer_id(): learned peer id for 0x5735dbfab460 (100.0.0.2): 4EBB385C80A2CA5D671E16F1C722FBFB5F176891, LW9cgGaOB6qz9wyN4sh3tx2Yrc9pv8OBTkV2T66H9zc
 Jan 01 00:34:22.080 [info] dirserv_orconn_tls_done(): Found router $4EBB385C80A2CA5D671E16F1C722FBFB5F176891~guard at 100.0.0.2 to be reachable at 100.0.0.2:9111. Yay.
 Jan 01 00:34:22.080 [info] channel_tls_process_certs_cell(): Got some good certificates from 100.0.0.2:9111: Authenticated it with RSA and Ed25519
 Jan 01 00:34:22.080 [info] channel_tls_process_auth_challenge_cell(): Got an AUTH_CHALLENGE cell from 100.0.0.2:9111: Sending authentication type 3
@@ -124660,13 +124662,13 @@ Jan 01 00:42:21.030 [info] circuit_free_(): Circuit 0 (id: 0) has been freed.
 Jan 01 00:42:32.000 [info] update_consensus_router_descriptor_downloads(): 0 router descriptors downloadable. 0 delayed; 4 present (0 of those were in old_routers); 0 would_reject; 0 wouldnt_use; 0 in progress.
 Jan 01 00:42:32.000 [info] update_extrainfo_downloads(): Extrainfo download status: 0 router with no ei, 5 with present ei, 0 delaying, 0 pending, 1 downloadable, 0 bogus in routers, 0 bogus in old_routers
 Jan 01 00:42:32.000 [info] connection_or_set_canonical(): Channel 0 chose an idle timeout of 196.
-Jan 01 00:42:32.000 [info] connection_or_set_identity_digest(): Set identity digest for 0x55d10c4b90b0 ((null)): FF197204099FA0E507FA46D41FED97D3337B4BAA VRly9OKfuzWTFF+PYPtPR2Mfy+fhhfgzZv139sFXOj4.
+Jan 01 00:42:32.000 [info] connection_or_set_identity_digest(): Set identity digest for 0x5735cca0b600 ((null)): FF197204099FA0E507FA46D41FED97D3337B4BAA VRly9OKfuzWTFF+PYPtPR2Mfy+fhhfgzZv139sFXOj4.
 Jan 01 00:42:32.000 [info] connection_or_set_identity_digest():    (Previously: 0000000000000000000000000000000000000000 <unset>)
 Jan 01 00:42:32.000 [info] connection_or_set_canonical(): Channel 31 chose an idle timeout of 4082.
 Jan 01 00:42:32.001 [info] handle_response_fetch_desc(): Received extra server info (body size 0) from server '100.0.0.1:9112'
 Jan 01 00:42:32.001 [info] handle_response_fetch_desc(): Received http status code 404 ("Servers unavailable") from server '100.0.0.1:9112' while fetching "/tor/server/d/68D0F2199446019EF177269921F006C73860E8EE.z". I'll try again soon.
 Jan 01 00:42:32.080 [info] channel_tls_process_versions_cell(): Negotiated version 5 with 100.0.0.4:9111; Sending cells: CERTS
-Jan 01 00:42:32.080 [info] connection_or_client_learned_peer_id(): learned peer id for 0x55d10c4b90b0 (100.0.0.4): FF197204099FA0E507FA46D41FED97D3337B4BAA, VRly9OKfuzWTFF+PYPtPR2Mfy+fhhfgzZv139sFXOj4
+Jan 01 00:42:32.080 [info] connection_or_client_learned_peer_id(): learned peer id for 0x5735cca0b600 (100.0.0.4): FF197204099FA0E507FA46D41FED97D3337B4BAA, VRly9OKfuzWTFF+PYPtPR2Mfy+fhhfgzZv139sFXOj4
 Jan 01 00:42:32.080 [info] dirserv_orconn_tls_done(): Found router $FF197204099FA0E507FA46D41FED97D3337B4BAA~middle2 at 100.0.0.4 to be reachable at 100.0.0.4:9111. Yay.
 Jan 01 00:42:32.080 [info] channel_tls_process_certs_cell(): Got some good certificates from 100.0.0.4:9111: Authenticated it with RSA and Ed25519
 Jan 01 00:42:32.080 [info] channel_tls_process_auth_challenge_cell(): Got an AUTH_CHALLENGE cell from 100.0.0.4:9111: Sending authentication type 3
@@ -124899,11 +124901,11 @@ Jan 01 00:52:59.065 [info] circuit_free_(): Circuit 0 (id: 0) has been freed.
 Jan 01 00:52:59.105 [info] circuit_mark_for_close_(): Circuit 0 (id: 0) marked for close at /home/shadow/shadow-plugin-tor/build/tor/src/core/or/command.c:673 (orig reason: 512, new reason: 0)
 Jan 01 00:52:59.105 [info] circuit_free_(): Circuit 0 (id: 0) has been freed.
 Jan 01 00:53:12.000 [info] connection_or_set_canonical(): Channel 0 chose an idle timeout of 220.
-Jan 01 00:53:12.000 [info] connection_or_set_identity_digest(): Set identity digest for 0x55d116025420 ((null)): 3FB0BD7827C760FE7F9DD810FCB10322D63AB4CF VTwev79utz2TlRZhQHiyrfRuhpItsENbKk6h1GpGfwQ.
+Jan 01 00:53:12.000 [info] connection_or_set_identity_digest(): Set identity digest for 0x5735bbda63a0 ((null)): 3FB0BD7827C760FE7F9DD810FCB10322D63AB4CF VTwev79utz2TlRZhQHiyrfRuhpItsENbKk6h1GpGfwQ.
 Jan 01 00:53:12.000 [info] connection_or_set_identity_digest():    (Previously: 0000000000000000000000000000000000000000 <unset>)
 Jan 01 00:53:12.000 [info] connection_or_set_canonical(): Channel 32 chose an idle timeout of 4106.
 Jan 01 00:53:12.080 [info] channel_tls_process_versions_cell(): Negotiated version 5 with 100.0.0.3:9111; Sending cells: CERTS
-Jan 01 00:53:12.080 [info] connection_or_client_learned_peer_id(): learned peer id for 0x55d116025420 (100.0.0.3): 3FB0BD7827C760FE7F9DD810FCB10322D63AB4CF, VTwev79utz2TlRZhQHiyrfRuhpItsENbKk6h1GpGfwQ
+Jan 01 00:53:12.080 [info] connection_or_client_learned_peer_id(): learned peer id for 0x5735bbda63a0 (100.0.0.3): 3FB0BD7827C760FE7F9DD810FCB10322D63AB4CF, VTwev79utz2TlRZhQHiyrfRuhpItsENbKk6h1GpGfwQ
 Jan 01 00:53:12.080 [info] dirserv_orconn_tls_done(): Found router $3FB0BD7827C760FE7F9DD810FCB10322D63AB4CF~middle1 at 100.0.0.3 to be reachable at 100.0.0.3:9111. Yay.
 Jan 01 00:53:12.080 [info] channel_tls_process_certs_cell(): Got some good certificates from 100.0.0.3:9111: Authenticated it with RSA and Ed25519
 Jan 01 00:53:12.080 [info] channel_tls_process_auth_challenge_cell(): Got an AUTH_CHALLENGE cell from 100.0.0.3:9111: Sending authentication type 3
@@ -125150,11 +125152,11 @@ Jan 01 00:55:32.000 [info] update_extrainfo_downloads(): Extrainfo download stat
 Jan 01 00:55:32.001 [info] handle_response_fetch_desc(): Received extra server info (body size 0) from server '100.0.0.1:9112'
 Jan 01 00:55:32.001 [info] handle_response_fetch_desc(): Received http status code 404 ("Servers unavailable") from server '100.0.0.1:9112' while fetching "/tor/server/d/68D0F2199446019EF177269921F006C73860E8EE.z". I'll try again soon.
 Jan 01 00:55:42.000 [info] connection_or_set_canonical(): Channel 0 chose an idle timeout of 188.
-Jan 01 00:55:42.000 [info] connection_or_set_identity_digest(): Set identity digest for 0x55d117390430 ((null)): 4EBB385C80A2CA5D671E16F1C722FBFB5F176891 LW9cgGaOB6qz9wyN4sh3tx2Yrc9pv8OBTkV2T66H9zc.
+Jan 01 00:55:42.000 [info] connection_or_set_identity_digest(): Set identity digest for 0x5735ce8b3de0 ((null)): 4EBB385C80A2CA5D671E16F1C722FBFB5F176891 LW9cgGaOB6qz9wyN4sh3tx2Yrc9pv8OBTkV2T66H9zc.
 Jan 01 00:55:42.000 [info] connection_or_set_identity_digest():    (Previously: 0000000000000000000000000000000000000000 <unset>)
 Jan 01 00:55:42.000 [info] connection_or_set_canonical(): Channel 33 chose an idle timeout of 3230.
 Jan 01 00:55:42.080 [info] channel_tls_process_versions_cell(): Negotiated version 5 with 100.0.0.2:9111; Sending cells: CERTS
-Jan 01 00:55:42.080 [info] connection_or_client_learned_peer_id(): learned peer id for 0x55d117390430 (100.0.0.2): 4EBB385C80A2CA5D671E16F1C722FBFB5F176891, LW9cgGaOB6qz9wyN4sh3tx2Yrc9pv8OBTkV2T66H9zc
+Jan 01 00:55:42.080 [info] connection_or_client_learned_peer_id(): learned peer id for 0x5735ce8b3de0 (100.0.0.2): 4EBB385C80A2CA5D671E16F1C722FBFB5F176891, LW9cgGaOB6qz9wyN4sh3tx2Yrc9pv8OBTkV2T66H9zc
 Jan 01 00:55:42.080 [info] dirserv_orconn_tls_done(): Found router $4EBB385C80A2CA5D671E16F1C722FBFB5F176891~guard at 100.0.0.2 to be reachable at 100.0.0.2:9111. Yay.
 Jan 01 00:55:42.080 [info] channel_tls_process_certs_cell(): Got some good certificates from 100.0.0.2:9111: Authenticated it with RSA and Ed25519
 Jan 01 00:55:42.080 [info] channel_tls_process_auth_challenge_cell(): Got an AUTH_CHALLENGE cell from 100.0.0.2:9111: Sending authentication type 3

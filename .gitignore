@@ -128,7 +128,49 @@ dmypy.json
 .pyre/
 
 
-# Project-specific excludes.
+# Project-specific excludes - Dados gerados muito grandes
+
+# Dados baixados Tor (muito grandes)
+*.tar.xz
+*.tar.gz
+consensuses-*/
+server-descriptors-*/
+torperf-*/
+userstats-relay-country.csv
+userstats-relay-country.cleaned.csv
+
+# TorNetTools outputs gerados
+tornettools_2020-05-data/
+tornet-0.*/
+relayinfo_staging_*.json
+userinfo_staging_*.json
+
+# Shadow outputs e logs (muito grandes)
+shadow.data/
+shadow.data.template/
+cell_counters/
+cell_counters_reproduced/
+cell_counters_analyzed/
+cell_counters_reproduced_analyzed/
+*.log
+tornetgen.*.log
+
+# Ficheiros de topologia muito grandes
+atlas-lossless.*.graphml.xml
+
+# IDEs e temporários
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Outputs gerados
+*_output/
+output_*/
+
+# Project-specific excludes (ficheiros individuais grandes)
 3_cell-pattern/uniqueness/shadow-plugin-tor_2-perc-scale-tor/resource/shadowtor-2-perc-scale-tor/conf/atlas-lossless.201801.shadow113.graphml.xml
 3_cell-pattern/uniqueness/shadow-plugin-tor_2-perc-scale-tor/resource/shadowtor-2-perc-scale-tor/shadow.data/hosts/markovclient1/stdout-markovclient1.tgen.1002.log
 3_cell-pattern/uniqueness/shadow-plugin-tor_2-perc-scale-tor/resource/shadowtor-2-perc-scale-tor/shadow.data/hosts/server1/stdout-server1.tgen.1000.log
