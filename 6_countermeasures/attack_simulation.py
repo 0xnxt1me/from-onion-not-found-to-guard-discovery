@@ -19,10 +19,10 @@ MEDIAN_HSDESC_LOOKUP_DURATION = 0.493
 
 N_HSDIRS_PER_ONION = 6
 
-# Sep 2020 consensus from CollecTor:
-# https://collector.torproject.org/archive/relay-descriptors/consensuses/consensuses-2020-09.tar.xz
-# grep -cE "^s.*HSDir.*$" 22/2020-09-22-16-00-00-consensus
-N_HSDIRS = 3905
+# Nov 2025 consensus from CollecTor:
+# https://collector.torproject.org/recent/relay-descriptors/consensuses/
+# Processed with process_consensus_2025.py
+N_HSDIRS = 5007  # Updated from 3905 (2020) to 5007 (2025)
 
 VICTIM_CCT = "VICTIM"
 NOISE_CCT = "NOISE"
@@ -41,7 +41,7 @@ VICTIM_CCT_GUARD = G1
 NOISE_CCT_GUARD = G2
 
 SECOND_HOP_RELAYS = [R3, R5]
-RELAY_CSV = "2020-09-22-18-36-48_relays.csv"
+RELAY_CSV = "../5_evaluation/study-2025/data/2025-11-23_relays.csv"  # Updated from 2020-09-22
 
 # Based on rate=3 MAX_HSDESC_RATE crawl data.
 HSDESC_LOOKUPS_JSON_FILE = "hsdesc_lookup_details.json"
@@ -101,7 +101,7 @@ class OnionAttackSimulation:
         self.circuit_tokens = simulation_info['n_initial_tokens']
         self.token_refill_rate = simulation_info['token_refill_rate']
         if self.token_refill_rate:
-            self.time_between_rate_limited_lookups = 1 / token_refill_rate
+            self.time_between_rate_limited_lookups = 1 / self.token_refill_rate
 
         self.rate_limited = False
         self.token_bucket_enabled = (self.circuit_tokens > 0)
@@ -742,7 +742,6 @@ def run_multiple_simulations(
             # we append max simulation duration for "no call" simulations
             simulation_info["attack_durations"].append(attack_duration)
             outcome_cnts[outcome] += 1
-
     dump_results(simulation_info, n_total_sim_runs,
                  fp_rates, outcome_cnts)
 
@@ -822,7 +821,7 @@ def sample_experiments(n_experiments):
 
 
 def dump_multi_run_results(simulation_info):
-    out_filename = "time_to_double_comp_%s_%s_%d_%0.3f.json" % (
+    out_filename = "study-2025/data/both_countermeasures_logs/time_to_double_comp_%s_%s_%d_%0.3f.json" % (
         simulation_info["n_adv_hsdirs"],
         simulation_info["adv_bw_share"],
         simulation_info["n_initial_tokens"],
