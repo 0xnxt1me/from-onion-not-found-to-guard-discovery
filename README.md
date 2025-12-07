@@ -1,60 +1,123 @@
-# From "Onion Not Found" to Guard Discovery (PETS'22)
+# From "Onion Not Found" to Guard Discovery - Validation and Countermeasures Study
 
-This repository holds the code and data for our **[PETS'22](https://petsymposium.org/cfp22.php)** paper titled **['From "Onion Not Found" to Guard Discovery'](https://www.esat.kuleuven.be/cosic/publications/article-3392.pdf)**. Each subfolder contains instructions to reproduce results, figures, and tables per the respective section in the paper. Please see the `README.md` files in each subfolder for more information.
+This repository contains an extension of the PETS'22 paper "From Onion Not Found to Guard Discovery" by Oldenburg, Acar, and Diaz. Our work validates the persistence of the guard discovery vulnerability in 2025 and evaluates countermeasure effectiveness.
 
-[Güneş Acar](https://github.com/gunesacar) contributed heavily to the creation of this artifact.
+Original paper: https://www.esat.kuleuven.be/cosic/publications/article-3392.pdf
+Original repository: https://github.com/numbleroot/from-onion-not-found-to-guard-discovery
 
-![Attack overview](https://user-images.githubusercontent.com/1864826/139098575-c23e1265-5885-4a68-aab8-41d89466ad51.png)
+## Our Contributions
 
+This fork contains two major validation studies:
 
-## Obtaining this Repository and Setting up the Environment
+1. 2020 Study: Replication of original experiments with updated Tor network data from September 2020
+2. 2025 Study: Temporal validation demonstrating the vulnerability remains effective despite network growth
 
-**Warning:** After taking below download steps, this repository is more than 16 GB in total size. There is also an [accompanying data set hosted at the OSF](https://osf.io/t9x4b/) that is about 64.5 GB.
+3. Countermeasure Evaluation: Analysis of token bucket rate limiting and Vanguards-lite defense mechanisms
 
-```bash
-user@host  $    git clone https://github.com/numbleroot/from-onion-not-found-to-guard-discovery.git
-user@host  $    cd from-onion-not-found-to-guard-discovery
-user@host  $    curl --location "https://files.de-1.osf.io/v1/resources/mbn95/providers/osfstorage/617bf5ad91ed6e00f3891f66?action=download&version=1&direct" --output 3_cell-pattern_large-files.tar
-user@host  $    tar xvf 3_cell-pattern_large-files.tar
-user@host  $    rm 3_cell-pattern_large-files.tar
-```
-
-The reproducibility steps described in this repository require superuser privileges (`root`) and a number of installed packages. Installation and setup of those will depend on your system. In case you are running a recent Ubuntu, we recommend to run the following steps so that the commands we list in the READMEs across this repository complete successfully:
-1. Update your package list: `sudo apt update`
-2. Install Python 3 (programming language): `sudo apt install python3`,
-3. Install Pip (Python package manager): `sudo apt install python3-pip`,
-4. Install Go (programming language): `sudo apt install golang`,
-5. Install Docker (virtualization software to run containers): please follow the steps listed [on their documentation page](https://docs.docker.com/engine/install/ubuntu/),
-6. Install Jupyter Lab and Python libraries numpy, pandas, seaborn, and matplotlib: `pip install jupyterlab numpy pandas seaborn matplotlib`,
-7. Download Tor Browser from [their download page](https://www.torproject.org/download/) and extract it to a location dedicated for usage with this repository.
-
-**Note:** Please mind that due to `/proc/cpuinfo` and `/proc/meminfo` not being available, the attack script [4_attack-tuning/launch_attack.py](./4_attack-tuning/launch_attack.py) will not work on MacOS (unless alternative ways to obtain the desired values are used in their places).
+Attack overview available in original paper.
 
 
-## Primary Data Sets
+## Key Findings
 
-* OSF data repository holding 93 of the [./3_cell-pattern/uniqueness](./3_cell-pattern/uniqueness) cell counter logs (ca. 64.5 GB): [https://osf.io/t9x4b](https://osf.io/t9x4b/)
-* Victim lookup crawl to determine the effect of injected subresource types: [./4_attack-tuning/1_data_resource-type](./4_attack-tuning/1_data_resource-type)
-* Victim lookup crawl to determine the effect of injected onion service version: [./4_attack-tuning/2_data_onion-version_victim-setting](./4_attack-tuning/2_data_onion-version_victim-setting)
-* Victim lookup crawl to determine the optimal injection rate: [./4_attack-tuning/3_data_injection-rate_victim-setting](./4_attack-tuning/3_data_injection-rate_victim-setting)
-* Victim lookup crawl with disabled JavaScript: [./4_attack-tuning/4_data_scriptless-attack](./4_attack-tuning/4_data_scriptless-attack)
-* HSDir response code count log: [./5_evaluation/1_data_noise-lookup-rate](./5_evaluation/1_data_noise-lookup-rate)
+Network Growth 2020-2025:
+- Total relays increased from 6451 to 9186 (+42.4%)
+- HSDir nodes increased from 3905 to 5007 (+28.2%)
+
+Attack Persistence:
+- Median attack time increased by only 0.2 seconds despite network growth
+- Success rate remains 85-100% across all configurations
+- Vulnerability is structural and cannot be mitigated by network growth alone
+
+Countermeasure Analysis:
+- Token bucket rate limiting (60 tokens/min) increases attack time by 23-32 seconds
+- Original paper proposal (6 tokens/min, 10 initial tokens) creates severe DoS vulnerability: legitimate users exhausted tokens in 5-10 seconds
+- Realistic configuration (60 tokens/min, 5 initial tokens) balances security and usability
+- Vanguards-lite provides additional protection when L2 guards are not compromised
+- Combined countermeasures offer strongest defense but require careful parameter tuning
+
+## Repository Structure
+
+Original paper sections (3_cell-pattern through 6_countermeasures) contain baseline experiments.
+
+Our validation studies:
+- 5_evaluation/study-2020: Replication with September 2020 network data
+- 5_evaluation/study-2025: Temporal validation with November 2025 network data
+- 6_countermeasures/study-2020: Countermeasure evaluation with 2020 parameters
+- 6_countermeasures/study-2025: Updated countermeasure analysis with realistic configurations
+
+See README.md files in each study directory for detailed documentation.
+
+## Setup
+
+This fork requires Python 3 with Jupyter, numpy, pandas, seaborn, matplotlib, and stem libraries. Simulation scripts use the same dependencies as the original repository.
 
 
-## Instructions for Reproduction
+## Our Data Sets
 
-Browse the READMEs linked below for instructions for how to reproduce the results of each section:
-* [3. "404 Not Found" Cell Pattern](./3_cell-pattern/README.md)
-  * [Determinism](./3_cell-pattern/determinism/README.md)
-  * [Uniqueness](./3_cell-pattern/uniqueness/README.md)
-* [4. Maximizing the Victim Lookup Rate](./4_attack-tuning/README.md)
-* [5. Attack Evaluation](./5_evaluation/README.md)
-* [6. Countermeasures](./6_countermeasures/README.md)
+Validation Study Data (2020):
+- 5_evaluation/2_data_attack-time: Attack simulation results with September 2020 network (6451 relays)
+- 6_countermeasures/1_data_token-bucket: Token bucket countermeasure evaluation
+
+Validation Study Data (2025):
+- 5_evaluation/study-2025/data: November 2025 consensus and relay CSV (9186 relays)
+- 5_evaluation/study-2025/results: Attack simulation results demonstrating persistence
+- 6_countermeasures/study-2025/data: Countermeasure evaluation with realistic parameters
+
+Original Paper Data:
+- OSF repository (64.5 GB): https://osf.io/t9x4b/
+- Additional datasets in 4_attack-tuning subdirectories
 
 
-## Reference
+## Reproducing Our Studies
 
-You can use the following BibTeX to cite our paper:
+2020 Validation Study:
+1. See 5_evaluation/study-2020/README.md for attack simulation replication
+2. See 6_countermeasures/study-2020/README.md for countermeasure evaluation
+
+2025 Validation Study:
+1. Download November 2025 consensus or use provided data in 5_evaluation/study-2025/data
+2. Run attack simulations following 5_evaluation/study-2025/README.md
+3. Evaluate countermeasures following 6_countermeasures/study-2025/README.md
+4. Compare results with 2020 data using provided comparison scripts
+
+Analysis Notebooks:
+- 5_evaluation/study-2025/1_analysis_noise-lookup-rate_2025.ipynb
+- 5_evaluation/study-2025/2_analysis_attack-time_2025.ipynb
+- 6_countermeasures/study-2025/1_analysis_token-bucket_2025.ipynb
+- 6_countermeasures/study-2025/4_analysis_realistic-refill_2025.ipynb
+
+Original Paper Reproduction:
+- 3_cell-pattern: Cell pattern analysis
+- 4_attack-tuning: Attack optimization
+- 5_evaluation: Original evaluation
+- 6_countermeasures: Original countermeasure analysis
+
+
+## Methodology
+
+Our studies use the original attack simulation framework with updated network parameters:
+- attack_simulation.py modified to use current relay consensus data
+- attack_simulation_refill_on.py extended to evaluate token bucket and Vanguards-lite countermeasures
+- 100 simulation runs per configuration for statistical significance
+- Network data collected from official Tor consensus archives
+
+Key modifications:
+- Updated N_HSDIRS parameter to reflect network growth
+- Implemented token bucket rate limiting (60 tokens/min realistic configuration)
+- Added Vanguards-lite L2 guard rotation simulation
+- Maintained original methodology for result comparability
+
+## Conclusions
+
+The guard discovery vulnerability identified in the original paper remains highly effective in 2025 despite significant network growth. Token bucket rate limiting provides meaningful protection but can be bypassed with patient attackers. 
+
+Critical discovery: The original paper's token bucket configuration (6 tokens/min, 10 initial tokens) creates a severe DoS vulnerability. Legitimate onion service clients exhaust their token allowance in 5-10 seconds during normal browsing, effectively blocking access. Our analysis demonstrates that realistic configurations require significantly higher refill rates (60 tokens/min) to maintain usability while still providing meaningful attack mitigation.
+
+Vanguards-lite offers additional defense when adversarial control of L2 guards is limited. The fundamental issue is structural in Tor's HSDir lookup protocol and requires protocol-level countermeasures rather than relying on network growth.
+
+## References
+
+Original paper:
 ```
 @article{OldenburgAcarDiaz_GuardDiscovery,
     title   = {{From "Onion Not Found" to Guard Discovery}},
@@ -68,3 +131,5 @@ You can use the following BibTeX to cite our paper:
     pages   = {522--543}
 }
 ```
+
+This validation study: Academic project validating and extending the original work, 2025.
