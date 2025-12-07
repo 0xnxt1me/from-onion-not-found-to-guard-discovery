@@ -6,12 +6,12 @@ from attack_simulation_refill_on import run_multiple_simulations
 #if both countermeasures are used, token buckets do not get empty
 
 # Usage:
-#    python3 countermeasures.py [vanguard_lite (0 or 1), both_countermeasures (0 or 1)]
+#    python3 countermeasures_refill_on.py [vanguard_lite (0 or 1), both_countermeasures (0 or 1)]
 #
 #Example: 
-#    python3 countermeasures.py 0 0  #Buckets only
-#    python3 countermeasures.py 1 0  #Vanguard Lite only
-#    python3 countermeasures.py 1 1  #Both countermeasures
+#    python3 countermeasures_refill_on.py 0 0  #Buckets only
+#    python3 countermeasures_refill_on.py 1 0  #Vanguard Lite only
+#    python3 countermeasures_refill_on.py 1 1  #Both countermeasures
 #
 
 if __name__ == "__main__":
