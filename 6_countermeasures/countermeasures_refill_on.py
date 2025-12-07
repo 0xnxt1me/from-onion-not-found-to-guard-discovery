@@ -24,14 +24,14 @@ if __name__ == "__main__":
     N_EXP = [10]
     N_RUNS = [10]
     N_INITIAL_TOKENS = [5,10,15]
-    TOKEN_REFILL = [0.1,0.01666]
+    TOKEN_REFILL = [0.1,0.01666]  # 6 tokens/min (0.1/s) or 1 token/min (0.01666/s)
 
     if len(sys.argv) == 3:
         VANGUARD_LITE = bool(int(sys.argv[1]))
         BOTH_COUNTERMEASURES = bool(int(sys.argv[2]))
     
         if VANGUARD_LITE:
-            TOKEN_REFILL = [0]
+            TOKEN_REFILL = [0.1]  #  0.1 (6 tokens per minute)
             if not BOTH_COUNTERMEASURES:
                 N_INITIAL_TOKENS = [0]
 

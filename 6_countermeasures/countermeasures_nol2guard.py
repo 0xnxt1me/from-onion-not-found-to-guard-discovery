@@ -1,5 +1,5 @@
 import sys
-from attack_simulation_refill_on import run_multiple_simulations
+from attack_simulation_nol2guard import run_multiple_simulations
 
 #no refill rate when both are used
 #vanguard lite disables both token bucket and rate limiting
@@ -9,9 +9,9 @@ from attack_simulation_refill_on import run_multiple_simulations
 #    python3 countermeasures.py [vanguard_lite (0 or 1), both_countermeasures (0 or 1)]
 #
 #Example: 
-#    python3 countermeasures.py 0 0  #Buckets only
-#    python3 countermeasures.py 1 0  #Vanguard Lite only
-#    python3 countermeasures.py 1 1  #Both countermeasures
+#    python3 countermeasures_nol2guard.py 0 0  #Buckets only
+#    python3 countermeasures_nol2guard.py 1 0  #Vanguard Lite only
+#    python3 countermeasures_nol2guard.py 1 1  #Both countermeasures
 #
 
 if __name__ == "__main__":
